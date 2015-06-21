@@ -12,6 +12,14 @@
     "express": "~4.12.4",
     "jade": "~1.9.2",
     "morgan": "~1.5.3",
-    "serve-favicon": "~2.2.1"
+    "serve-favicon": "~2.2.1",
+    "mongodb": ">= 0.9.9",
+    "connect-mongo": ">= 0.1.7"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.5",
+    "express-session": "^1.11.3",
+    "jquery": "^2.1.4",
+    "mongodb": "^2.0.34"
   }
 }

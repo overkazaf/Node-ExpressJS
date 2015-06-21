@@ -9,6 +9,9 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var tests = require('./routes/tests');
 
+var session    = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var settings = require('./settings/settings');
 var app = express();
 
 // view engine setup
@@ -26,6 +29,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/tests', tests);
+
+
+app.use(session({
+  secret: settings.cookieSecret,
+  resave: false,
+  store :  new MongoStore({
+    db: settings.db
+  }),
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
