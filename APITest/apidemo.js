@@ -13,3 +13,8 @@ for (var i = 0; i < 100000000; i++) {
   ;
 }
 console.timeEnd('100-elements');
+
+
+var str = "hello world";
+var bf = new Buffer(str);
+log(Buffer.byteLength(bf));
