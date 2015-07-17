@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">发送</button>
+<script type="text/javascript">
+	var ws = null;
+	function initWebsocket(){
+		ws = new Websocket('ws://localhost:3000/');
+		ws.onopen = function (){
+			console.log('open');
+			var json = {'greeting': 'hello Kitty'};
+			ws.send(json);
+		}
+
+		ws.onmessage = function (event){
+			appendLog(event.data);
+		}
+
+		var getInstance = function (fn){
+			var obj;
+			return function (){
+				return obj || (obj = fn.apply(this, arguments));
+			}
+		};
+
+		var getLogger = getInstance(function (){
+			var logger = document.createElement('pre');
+			logger.id = 'logger';
+			return document.body.appendChild(logger);
+		});
+
+		function appendLog (data) {
+			var logger = getLogger();
+			alert(data);
+			logger.innerHTML += '<p>'+ data +'</p>';
+		};
+
+		function send(data) {
+			ws.send(data);
+		};
+
+		var btn = document.getElementById('btn');
+		btn.onclick = function (){
+			send('123123');
+		}
+	}
+</script>
+</body>
+</html>
