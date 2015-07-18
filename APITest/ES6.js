@@ -30,8 +30,12 @@ var swap = function (a, b){
 }
 
 // pass an array to swap values
-var a = 1;
-var b = 2;
-var c  = [a, b];
-c = swap(a,b);
-console.log(c);
+// var a = 1;
+// var b = 2;
+// var c  = [a, b];
+// c = swap(a,b);
+// console.log(c);
+// 
+// 
+console.log(require.extensions);
+
