@@ -37,5 +37,30 @@ var swap = function (a, b){
 // console.log(c);
 // 
 // 
-console.log(require.extensions);
+//console.log(require.extensions);
 
+// nextTick and setImmediate tests
+
+var log = console.log;
+
+process.nextTick(function (){
+	console.log('nextTick calling 1');
+});
+
+process.nextTick(function() {
+	console.log('nextTick calling 2');
+});
+
+setImmediate(function (){
+	console.log('setImmediate calling1');
+
+	process.nextTick(function (){
+		console.log('force insert nextTick in immediate');
+	});
+});
+
+setImmediate(function (){
+	console.log('setImmediate calling2');
+});
+
+console.log('normal');
