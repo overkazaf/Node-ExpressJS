@@ -43,7 +43,12 @@ var swap = function (a, b){
 
 var log = console.log;
 
+setTimeout(function (){
+	// O(log(n));
+	console.log('in timeout');
+})
 process.nextTick(function (){
+	// O(1);
 	console.log('nextTick calling 1');
 });
 
@@ -64,3 +69,11 @@ setImmediate(function (){
 });
 
 console.log('normal');
+
+
+console.log(process.memoryUsage());
+
+var fs = require('fs');
+var reader = fs.createReadStream('gc.log');
+var writer = fs.createWriteStream('gc.out');
+reader.pipe(writer);
