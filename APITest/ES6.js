@@ -77,3 +77,6 @@ var fs = require('fs');
 var reader = fs.createReadStream('gc.log');
 var writer = fs.createWriteStream('gc.out');
 reader.pipe(writer);
+
+
+
