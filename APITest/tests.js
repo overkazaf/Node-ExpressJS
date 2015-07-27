@@ -25,6 +25,6 @@ function getSelectedValues() {
 }
 
 
-function setSelectedValues(values) {
-
+function setSelectedValues(values, $dom) {
+	// test case
 }
